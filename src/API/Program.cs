@@ -1,3 +1,6 @@
+using System.Security.Cryptography;
+using API.Extensions;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -14,7 +17,34 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+
+app.Map("/map1", HandleMapTest1);
+
+
+
+
+app.Map("/level1", level1App => {
+    level1App.Map("/level2a", async level2AApp => {
+        level2AApp.Run(async context => {
+            await context.Response.WriteAsync("in /level1/level2a");
+        });
+    });
+});
+
+// app.MapWhen(context => context.Request.Query.ContainsKey)
+
+static void HandleMapTest1(IApplicationBuilder app) 
+{
+    app.Run(async context=> {
+        await context.Response.WriteAsync("Map Test 1");
+    });
+}
+
+
+// Middlewares out of box.
+app.UseClientOptions();
+
+// app.UseHttpsRedirection(); // Move to WebApplicationExtensions
 
 var summaries = new[]
 {
