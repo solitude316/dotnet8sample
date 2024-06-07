@@ -1,5 +1,6 @@
 using System.Security.Cryptography;
 using API.Extensions;
+using API.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -45,6 +46,7 @@ static void HandleMapTest1(IApplicationBuilder app)
 app.UseClientOptions();
 
 // app.UseHttpsRedirection(); // Move to WebApplicationExtensions
+
 
 var summaries = new[]
 {
