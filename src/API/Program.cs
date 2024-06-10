@@ -37,6 +37,7 @@ app.Map("/map1", HandleMapTest1);
 static void HandleMapTest1(IApplicationBuilder app) 
 {
     string html = """
+    <meta charset="utf-8">
     <div class="text-center">
         <h2>Smile, You're on candid camera. :-)  :) </h2>
         <p>It event works inside ;-) a paragraph.</p>
