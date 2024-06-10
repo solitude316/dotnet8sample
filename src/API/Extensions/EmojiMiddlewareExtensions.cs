@@ -18,9 +18,9 @@ public class EmojiStream : Stream
     private readonly Stream _responseStream;
 
     private readonly Dictionary<string, string> _map = new(){
-        {":-)", " :) "},
-        {":)", " :) "},
-        {";-)", " ;) "}
+        {":-)", "😊"},
+        {":)", "😊"},
+        {";-)", "😉"}
     };
 
     public EmojiStream(Stream responseStream)
@@ -74,9 +74,10 @@ public class EmojiStream : Stream
                 continue;
             }
 
-            html = html.Replace(emoticon.Key, emoticon.Value);
-            buffer = Encoding.UTF8.GetBytes(html);
-            _responseStream.WriteAsync(buffer, 0, buffer.Length);
+            html = html.Replace(emoticon.Key, emoticon.Value);    
         }
+
+        buffer = Encoding.UTF8.GetBytes(html);
+        _responseStream.WriteAsync(buffer, 0, buffer.Length);
     }
 }

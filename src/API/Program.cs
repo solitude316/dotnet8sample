@@ -43,7 +43,7 @@ static void HandleMapTest1(IApplicationBuilder app)
     </div>
     """;
     app.Run(async context=> {
-        await context.Response.WriteAsync("Map Test 1");
+        await context.Response.WriteAsync(html);
     });
 }
 
