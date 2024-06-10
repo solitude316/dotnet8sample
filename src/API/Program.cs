@@ -18,24 +18,30 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseRouting();
+
+app.UseEmojiMiddleware();
 
 app.Map("/map1", HandleMapTest1);
 
-
-
-
-app.Map("/level1", level1App => {
-    level1App.Map("/level2a", async level2AApp => {
-        level2AApp.Run(async context => {
-            await context.Response.WriteAsync("in /level1/level2a");
-        });
-    });
-});
+// app.Map("/level1", async level1App => {
+//     level1App.Map("/level2a", async level2AApp => {
+//         level2AApp.Run(async context => {
+//             await context.Response.WriteAsync("in /level1/level2a");
+//         });
+//     });
+// });
 
 // app.MapWhen(context => context.Request.Query.ContainsKey)
 
 static void HandleMapTest1(IApplicationBuilder app) 
 {
+    string html = """
+    <div class="text-center">
+        <h2>Smile, You're on candid camera. :-)  :) </h2>
+        <p>It event works inside ;-) a paragraph.</p>
+    </div>
+    """;
     app.Run(async context=> {
         await context.Response.WriteAsync("Map Test 1");
     });
