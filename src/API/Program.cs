@@ -9,6 +9,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+//
+builder.WebHost.UseKestrel(options => options.AddServerHeader = false);
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -19,21 +22,14 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseRouting();
-
 app.UseEmojiMiddleware();
 
+// Middlewares out of box.
+app.UseClientOptions();
+
+
+
 app.Map("/map1", HandleMapTest1);
-
-// app.Map("/level1", async level1App => {
-//     level1App.Map("/level2a", async level2AApp => {
-//         level2AApp.Run(async context => {
-//             await context.Response.WriteAsync("in /level1/level2a");
-//         });
-//     });
-// });
-
-// app.MapWhen(context => context.Request.Query.ContainsKey)
-
 static void HandleMapTest1(IApplicationBuilder app) 
 {
     string html = """
@@ -47,13 +43,6 @@ static void HandleMapTest1(IApplicationBuilder app)
         await context.Response.WriteAsync(html);
     });
 }
-
-
-// Middlewares out of box.
-app.UseClientOptions();
-
-// app.UseHttpsRedirection(); // Move to WebApplicationExtensions
-
 
 var summaries = new[]
 {
@@ -74,6 +63,7 @@ app.MapGet("/weatherforecast", () =>
 })
 .WithName("GetWeatherForecast")
 .WithOpenApi();
+
 
 app.Run();
 
