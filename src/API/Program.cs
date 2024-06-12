@@ -23,6 +23,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseRouting();
 app.UseEmojiMiddleware();
+app.RemoveInsecureHeaders();
 
 // Middlewares out of box.
 app.UseClientOptions();
