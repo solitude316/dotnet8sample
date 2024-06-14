@@ -1,5 +1,5 @@
 
-namespace API.Extensions;
+namespace Otter.API.Extensions;
 
 public class EmojiMiddleware
 {

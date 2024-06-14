@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Http;
 
-namespace API.Middlewares;
+namespace Otter.API.Middlewares;
 public class MyFirstMiddleware
 {
     private readonly ILogger _logger;

@@ -1,4 +1,4 @@
-namespace Tests;
+namespace Otter.Tests;
 
 public class UnitTest1
 {

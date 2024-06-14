@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Primitives;
 
-namespace API.Middlewares;
+namespace Otter.API.Middlewares;
 public class RemoveInsecureHeaderMiddleware
 {
     private readonly RequestDelegate _next;

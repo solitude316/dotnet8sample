@@ -1,6 +1,6 @@
-using API.Middlewares;
+using Otter.API.Middlewares;
 
-namespace API.Extensions;
+namespace Otter.API.Extensions;
 
 public static class MyFirstMiddlewareExtensions
 {

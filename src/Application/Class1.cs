@@ -1,4 +1,4 @@
-﻿namespace Application;
+﻿namespace Otter.Application;
 
 public class Class1
 {
