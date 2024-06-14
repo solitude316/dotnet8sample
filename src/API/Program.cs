@@ -1,6 +1,6 @@
 using System.Security.Cryptography;
-using API.Extensions;
-using API.Middlewares;
+using Otter.API.Extensions;
+using Otter.API.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
