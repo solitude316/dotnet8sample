@@ -22,8 +22,8 @@ public class RemoveInsecureHeaderMiddleware
             context.Response.Headers.Remove("X-Aspnet-Version");
             context.Response.Headers.Remove("X-AspnetMvc-Version");
             
-            context.Response.Headers.Add("X-Content-Type-Option", new StringValues("nosniff"));
-            context.Response.Headers.Add("X-Frame-Options", new StringValues("DENY"));
+            context.Response.Headers.Append("X-Content-Type-Option", new StringValues("nosniff"));
+            context.Response.Headers.Append("X-Frame-Options", new StringValues("DENY"));
         
             return Task.CompletedTask;
         }, null!);
